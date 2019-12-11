@@ -22,9 +22,30 @@ export function decrement() {
     type: types.DECREMENT
   };
 }
-export function addFeature() {
-    return {
-      type: types.ADD_FEATURE,
-      payload:{}
-    };
-  }
+export function addFeature(id) {
+  console.log(id);
+  return {
+    type: types.ADD_FEATURE,
+    payload: id
+    //filter over features array here
+  };
+}
+export function deleteFeature(id) {
+  return {
+    type: types.REMOVE_FEATURE,
+    payload: id
+    //filter over features array here
+  };
+}
+
+//   const postReducer = (state = [], action) => {
+//     switch(action.type) {
+//       case 'ADD_POST':
+//         return state.concat([action.data]);
+//       case 'DELETE_POST':
+//         return state.filter((post)=>post.id !== action.id);
+//       default:
+//         return state;
+//     }
+//   }
+//   export default postReducer;

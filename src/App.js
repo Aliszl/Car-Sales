@@ -1,52 +1,48 @@
 import React from "react";
-
+import { connect } from "react-redux";
 import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
-import features from "./constants/features"
+import { addFeature, deleteFeature } from "./state/actionCreators";
 import Counter from "./components/Counter";
 
-const App = () => {
-  const state = {
-    additionalPrice: 0,
-    car: {
-      price: 26395,
-      name: "2019 Ford Mustang",
-      image:
-        "https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg",
-      features: []
-    },
-    additionalFeatures: [
-      { id: 1, name: "V-6 engine", price: 1500 },
-      { id: 2, name: "Racing detail package", price: 1500 },
-      { id: 3, name: "Premium sound system", price: 500 },
-      { id: 4, name: "Rear spoiler", price: 250 }
-    ]
-  };
+const App = ({ state, addFeature, deleteFeature }) => {
+  // const removeFeature = item => {
+  //   // dispatch an action here to remove an item
+  // };
 
-  const removeFeature = item => {
-    // dispatch an action here to remove an item
-  };
-
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-  };
-
+  // const buyItem = item => {
+  //   // dipsatch an action here to add an item
+  // };
+  // console.log(state);
   return (
     <div className="boxes">
       <div className="box">
         <Counter />
         <Header car={state.car} />
 
-        <AddedFeatures car={state.car} />
+        <AddedFeatures car={state.car} deleteFeature={deleteFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
+        <AdditionalFeatures
+          addFeature={addFeature}
+          additionalFeatures={state.additionalFeatures}
+        />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
       </div>
     </div>
   );
 };
+function mapStateToProps(state) {
+  // console.log("I ran first");
+  return {
+    state: state.carReducer
+  };
+}
+export default connect(
+  mapStateToProps, // injects props into Counter
 
-export default App;
+  { addFeature, deleteFeature } // STEP 9 OF THE GENERAL STEPS (B)
+)(App);
+// export default App;

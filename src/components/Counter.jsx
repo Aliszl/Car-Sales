@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect} from "react-redux";
 // STEP 9 OF THE GENERAL STEPS (A)
 import { increment, decrement } from "../state/actionCreators";
 

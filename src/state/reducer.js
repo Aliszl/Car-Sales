@@ -1,10 +1,6 @@
 //A reducer is a function that returns an object
 //The returned object represents the state tree
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore } from "redux";
 import * as types from "./actionTypes";
-import features from "../constants/features";
 
 const initialCount = 0;
 export function countReducer(count = initialCount, action) {
@@ -37,9 +33,44 @@ const initialState = {
 export function carReducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_FEATURE:
-      return state.features.concat(action.payload);
+      console.log(state);
+  
+      const newFeature = [...state.additionalFeatures].find(feature => {
+        console.log(feature.id, action.id);
+        return feature.id === action.payload;
+      });
+      console.log(newFeature);
 
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [...state.car.features, newFeature]
+        }
+      };
+    case types.REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [...state.car.features].filter(
+            feature => feature.id === action.id
+          )
+        }
+      };
     default:
       return state;
   }
 }
+
+// const postReducer = (state = [], action) => {
+//   switch(action.type) {
+//     case 'ADD_POST':
+//       return state.concat([action.data]);
+//     case 'DELETE_POST':
+//       return state.filter((post)=>post.id !== action.id);
+//     default:
+//       return state;
+//   }
+// }
+// export default postReducer;
