@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import AddedFeatures from "./components/AddedFeatures";
 import AdditionalFeatures from "./components/AdditionalFeatures";
 import Total from "./components/Total";
-// import Counter from "./components/Counter";
+import features from "./constants/features"
+import Counter from "./components/Counter";
 
 const App = () => {
   const state = {
@@ -35,7 +36,7 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        {/* <Counter /> */}
+        <Counter />
         <Header car={state.car} />
 
         <AddedFeatures car={state.car} />
