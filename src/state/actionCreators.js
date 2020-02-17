@@ -37,6 +37,14 @@ export function deleteFeature(id) {
     //filter over features array here
   };
 }
+export function additionalPriceReducer(id) {
+    return {
+      type: types.ADD_PRICE,
+      //filter over features array here
+    };
+  }
+
+
 
 //   const postReducer = (state = [], action) => {
 //     switch(action.type) {

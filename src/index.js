@@ -11,6 +11,7 @@ import "./styles.scss";
 const monsterReducer = combineReducers({
   count: reducer.countReducer,
   carReducer: reducer.carReducer,
+  additionalPrice:reducer.carReducer,
 });
 
 const store = createStore(

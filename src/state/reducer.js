@@ -54,10 +54,18 @@ export function carReducer(state = initialState, action) {
         car: {
           ...state.car,
           features: [...state.car.features].filter(
-            feature => feature.id === action.id
+            feature => feature.id !== action.payload
           )
         }
       };
+      case types.ADD_PRICE:
+      return
+      //  {
+        // ...state,
+        // car:{
+        //   price
+        // } 
+    
     default:
       return state;
   }
