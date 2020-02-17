@@ -31,6 +31,8 @@ const initialState = {
   ]
 };
 export function carReducer(state = initialState, action) {
+
+  const featureId = action.payload;
   switch (action.type) {
     case types.ADD_FEATURE:
       console.log(state);
@@ -54,7 +56,7 @@ export function carReducer(state = initialState, action) {
         car: {
           ...state.car,
           features: [...state.car.features].filter(
-            feature => feature.id !== action.payload
+            feature => feature.id !== featureId
           )
         }
       };
